@@ -8,8 +8,8 @@
 
 <ion-content class="main">
   <div class="main">
-    <h2>Login</h2>
-    <form name="LoginForm">
+    <h2>Register</h2>
+    <form (ngSubmit)="logForm()" name="userForm">
       <ion-item>
         <ion-input
           type="text"
@@ -28,17 +28,13 @@
           ><ion-icon slot="start" name="key"></ion-icon
         ></ion-input>
       </ion-item>
-      <ion-button (click)="login()" expand="block" fill="clear" shape="round">
-        Connect
-      </ion-button>
       <ion-button
-        (click)="disconnect()"
+        (click)="registerUser()"
         expand="block"
         fill="clear"
         shape="round"
-        color="danger"
       >
-        disconnect
+        Register
       </ion-button>
     </form>
   </div>
