@@ -1,0 +1,7 @@
+{
+  "name": "NailLib",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
