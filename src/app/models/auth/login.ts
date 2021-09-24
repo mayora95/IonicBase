@@ -3,4 +3,5 @@ export class Login {
   email: string;
   password: string;
   active: boolean;
+  loggedin: boolean;
 }

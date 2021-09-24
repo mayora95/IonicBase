@@ -3,6 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { Login } from 'src/app/models/auth/login';
 
+//FireBase
+import * as firebase from 'firebase/auth';
+import { observable, Observable } from 'rxjs';
+
+import { AuthService } from '../../services/user/auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -10,26 +16,29 @@ import { Login } from 'src/app/models/auth/login';
 })
 export class LoginPage implements OnInit {
   user: Login;
-  constructor() {
+  fireUser: firebase.User;
+
+  constructor(private authService: AuthService) {
     this.user = new Login();
+
+    firebase.getAuth().onAuthStateChanged((user) => {
+      this.fireUser = user;
+    });
   }
   ngOnInit() {}
   onClick() {}
-  login() {
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, this.user.email, this.user.password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
+  async login() {
+    await this.authService
+      .logUserIn(this.user.email, this.user.password)
+      .then(() => {
+        this.fireUser = firebase.getAuth().currentUser;
       });
   }
   disconnect() {
     getAuth().signOut();
+    this.fireUser = null;
+  }
+  showState() {
+    this.fireUser = firebase.getAuth().currentUser;
   }
 }

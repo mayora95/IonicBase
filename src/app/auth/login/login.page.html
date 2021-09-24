@@ -9,7 +9,7 @@
 <ion-content class="main">
   <div class="main">
     <h2>Login</h2>
-    <form name="LoginForm">
+    <form *ngIf="!fireUser" name="LoginForm">
       <ion-item>
         <ion-input
           type="text"
@@ -31,6 +31,9 @@
       <ion-button (click)="login()" expand="block" fill="clear" shape="round">
         Connect
       </ion-button>
+    </form>
+    <div *ngIf="fireUser" class="disconnect">
+      <ion-label class="ion-padding">Hello, {{fireUser.email}} !</ion-label>
       <ion-button
         (click)="disconnect()"
         expand="block"
@@ -40,6 +43,9 @@
       >
         disconnect
       </ion-button>
-    </form>
+    </div>
+    <ion-button (click)="showState()" expand="block" fill="clear" shape="round">
+      State
+    </ion-button>
   </div>
 </ion-content>
