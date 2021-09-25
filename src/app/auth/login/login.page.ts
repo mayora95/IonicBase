@@ -18,7 +18,7 @@ export class LoginPage implements OnInit {
   user: Login;
   fireUser: firebase.User;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.user = new Login();
 
     firebase.getAuth().onAuthStateChanged((user) => {
@@ -32,11 +32,15 @@ export class LoginPage implements OnInit {
       .logUserIn(this.user.email, this.user.password)
       .then(() => {
         this.fireUser = firebase.getAuth().currentUser;
+        this.router.navigateByUrl('/profile');
       });
   }
   disconnect() {
-    getAuth().signOut();
-    this.fireUser = null;
+    getAuth()
+      .signOut()
+      .then(() => {
+        this.router.navigateByUrl('/login');
+      });
   }
   showState() {
     this.fireUser = firebase.getAuth().currentUser;

@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-title>profile</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="fireUser" class="main">
+    <ion-label class="ion-margin" class="ion-padding">Hello, {{fireUser.email}} !</ion-label>
+    <ion-button (click)="disconnect()" expand="block" fill="clear" shape="round" color="danger">
+      disconnect
+    </ion-button>
+  </div>
+</ion-content>

@@ -11,22 +11,14 @@
     <h2>Login</h2>
     <form *ngIf="!fireUser" name="LoginForm">
       <ion-item>
-        <ion-input
-          type="text"
-          placeholder="E-mail"
-          [(ngModel)]="user.email"
-          name="user.email"
-          ><ion-icon slot="start" name="person"></ion-icon
-        ></ion-input>
+        <ion-icon slot="start" name="person"></ion-icon>
+        <ion-input type="text" placeholder="E-mail" [(ngModel)]="user.email" name="user.email">
+        </ion-input>
       </ion-item>
       <ion-item>
-        <ion-input
-          type="password"
-          placeholder="Password"
-          [(ngModel)]="user.password"
-          name="user.password"
-          ><ion-icon slot="start" name="key"></ion-icon
-        ></ion-input>
+        <ion-icon slot="start" name="key"></ion-icon>
+        <ion-input type="password" placeholder="Password" [(ngModel)]="user.password" name="user.password">
+        </ion-input>
       </ion-item>
       <ion-button (click)="login()" expand="block" fill="clear" shape="round">
         Connect
@@ -34,13 +26,7 @@
     </form>
     <div *ngIf="fireUser" class="disconnect">
       <ion-label class="ion-padding">Hello, {{fireUser.email}} !</ion-label>
-      <ion-button
-        (click)="disconnect()"
-        expand="block"
-        fill="clear"
-        shape="round"
-        color="danger"
-      >
+      <ion-button (click)="disconnect()" expand="block" fill="clear" shape="round" color="danger">
         disconnect
       </ion-button>
     </div>

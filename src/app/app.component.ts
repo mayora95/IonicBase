@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { getAuth, User } from 'firebase/auth';
 import { AuthGuard } from './services/user/auth.guard';
+import { LayoutRules } from './utils/layoutRules';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -9,22 +10,54 @@ import { AuthGuard } from './services/user/auth.guard';
 export class AppComponent {
   fireBaseUser: User;
   public appPages = [
-    { title: 'home', url: '/home', icon: 'home', hidden: true },
-    { title: 'login', url: '/login', icon: 'person', hidden: false },
-    { title: 'register', url: '/register', icon: 'add', hidden: false },
+    { title: 'home', url: '/home', icon: 'home', hidden: LayoutRules.loggedIn },
+    {
+      title: 'Login',
+      url: '/login',
+      icon: 'person',
+      hidden: LayoutRules.loggedOut,
+    },
+    {
+      title: 'register',
+      url: '/register',
+      icon: 'add',
+      hidden: LayoutRules.loggedOut,
+    },
+    {
+      title: 'Profile',
+      url: '/profile',
+      icon: 'person',
+      hidden: LayoutRules.loggedIn,
+    },
   ];
   constructor() {
     getAuth().onAuthStateChanged((user) => {
       this.fireBaseUser = user;
     });
   }
-  menuManagement(hidden: boolean): boolean {
-    if (this.fireBaseUser == null && hidden) {
-      console.log('cache');
-      return false;
+  menuManagement(hidden: LayoutRules): boolean {
+    if (this.fireBaseUser) {
+      switch (hidden) {
+        case LayoutRules.loggedIn:
+          return true;
+        case LayoutRules.open:
+          return true;
+        case LayoutRules.loggedOut:
+          return false;
+        default:
+          return false;
+      }
     } else {
-      console.log('affiche');
-      return true;
+      switch (hidden) {
+        case LayoutRules.loggedIn:
+          return false;
+        case LayoutRules.open:
+          return true;
+        case LayoutRules.loggedOut:
+          return true;
+        default:
+          return false;
+      }
     }
   }
 }
