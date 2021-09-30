@@ -29,6 +29,12 @@ export class AppComponent {
       icon: 'person',
       hidden: LayoutRules.loggedIn,
     },
+    {
+      title: 'Artists',
+      url: '/artists',
+      icon: 'book',
+      hidden: LayoutRules.loggedIn,
+    },
   ];
   constructor() {
     getAuth().onAuthStateChanged((user) => {
