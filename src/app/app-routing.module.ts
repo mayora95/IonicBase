@@ -29,7 +29,23 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    loadChildren: () => import('./auth/profile/profile.module').then( m => m.ProfilePageModule)
+    loadChildren: () =>
+      import('./auth/profile/profile.module').then((m) => m.ProfilePageModule),
+  },
+  {
+    path: 'artists',
+    loadChildren: () =>
+      import('./booking/artists/artists.module').then(
+        (m) => m.ArtistsPageModule
+      ),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'artist',
+    loadChildren: () =>
+      import('./booking/artists/artist/artist.module').then(
+        (m) => m.ArtistPageModule
+      ),
   },
 ];
 
