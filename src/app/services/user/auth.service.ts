@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-
-import * as firebase from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -8,9 +7,8 @@ import * as firebase from 'firebase/auth';
 export class AuthService {
   constructor() {}
   public async logUserIn(mail, password) {
-    const auth = firebase.getAuth();
-    firebase
-      .signInWithEmailAndPassword(auth, mail, password)
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, mail, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;

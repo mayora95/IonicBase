@@ -9,4 +9,10 @@
 
 <ion-content>
   <p>Show all availible artists near me</p>
+  <ul>
+    <li *ngFor="let item of items | async">
+      {{ item.userName }} <br>
+      {{item.email}}
+    </li>
+  </ul>
 </ion-content>

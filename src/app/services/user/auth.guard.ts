@@ -22,7 +22,6 @@ export class AuthGuard implements CanActivate {
       firebase.getAuth().onAuthStateChanged((user: firebase.User) => {
         if (user) {
           resolve(true);
-          console.log(user);
         } else {
           console.log('User is not logged in');
           resolve(false);
