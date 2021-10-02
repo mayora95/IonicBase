@@ -15,7 +15,16 @@
       {{item.email}}
     </li>
   </ul>
-  <ion-card button (click)="cardClick()">
-
+  <ion-card button (click)="goToArtist()" *ngFor="let item of items | async">
+    <img
+      src="https://images.unsplash.com/photo-1617159334298-12ec5bef89a7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80" />
+    <ion-card-header>
+      <ion-card-subtitle>Destination</ion-card-subtitle>
+      <ion-card-title>Madison, WI</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin
+      Territory in 1836.
+    </ion-card-content>
   </ion-card>
 </ion-content>
