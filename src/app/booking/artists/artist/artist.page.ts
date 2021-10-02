@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Artist } from 'src/app/models/artist';
 import { ArtistService } from 'src/app/services/artists/artist.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-artist',
   templateUrl: './artist.page.html',
@@ -12,15 +13,25 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class ArtistPage implements OnInit {
   public artist: Artist;
   public obsArtist: Observable<Artist>;
+  public id: string;
   constructor(
     private artistService: ArtistService,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
   ngOnInit() {
+    this.route.paramMap.subscribe((params) => {
+      this.id = params.get('id');
+    });
     this.afs
       .collection<Artist>('artists')
-      .doc('feroz')
+      .doc(this.id)
       .valueChanges()
-      .subscribe((deoc) => (this.artist = deoc));
+      .subscribe((doc) => (this.artist = doc));
   }
+  editArtist(id: string) {
+    this.router.navigateByUrl('artists/edit-artist');
+  }
+  deleteArtist(id: string) {}
 }

@@ -8,23 +8,19 @@
 </ion-header>
 
 <ion-content>
-  <p>Show all availible artists near me</p>
-  <ul>
-    <li *ngFor="let item of items | async">
-      {{ item.userName }} <br>
-      {{item.email}}
-    </li>
-  </ul>
-  <ion-card button (click)="goToArtist()" *ngFor="let item of items | async">
-    <img
-      src="https://images.unsplash.com/photo-1617159334298-12ec5bef89a7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80" />
+  <ion-text class="ion-margin" class="ion-padding">
+    <p>Availible artists around you</p>
+  </ion-text>
+  <ion-card button (click)="goToArtist(artist.id)" *ngFor="let artist of artists | async">
+
+    <img src="{{artist.pic}}" />
+
+
     <ion-card-header>
-      <ion-card-subtitle>Destination</ion-card-subtitle>
-      <ion-card-title>Madison, WI</ion-card-title>
+      <ion-card-subtitle>Nail artist</ion-card-subtitle>
+      <ion-card-title>{{artist.userName}}</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
-      Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin
-      Territory in 1836.
+    <ion-card-content>{{artist.bio}}
     </ion-card-content>
   </ion-card>
 </ion-content>

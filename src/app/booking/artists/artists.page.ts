@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { Artist } from 'src/app/models/artist';
 import { ArtistService } from 'src/app/services/artists/artist.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-artists',
@@ -15,13 +16,14 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class ArtistsPage implements OnInit {
   private itemsCollection: AngularFirestoreCollection<Artist>;
-  private items: Observable<Artist[]>;
-  constructor(private artistServe: ArtistService) {
+  private artists: Observable<any>;
+  constructor(private artistServe: ArtistService, private router: Router) {
     this.itemsCollection = artistServe.getArtist();
-    this.items = this.itemsCollection.valueChanges();
+    this.artists = this.itemsCollection.valueChanges({ idField: 'id' });
   }
 
-  ngOnInit() {
-    // console.log(this.artistServe.getArtist2());
+  ngOnInit() {}
+  goToArtist(artistId: string) {
+    this.router.navigateByUrl('artists/artist-details/' + artistId);
   }
 }

@@ -1,9 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-label>Artist</ion-label>
+    <div *ngIf="artist">
+      <ion-title>{{artist.userName}}</ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
@@ -12,5 +14,13 @@
     <h3>{{artist.userName}}</h3>
     <p>{{artist.email}}</p>
     <p>{{artist.active}}</p>
+  </div>
+  <div class="edit">
+    <ion-button (click)="editArtist()" expand="block" fill="clear" shape="round">
+      Edit
+    </ion-button>
+    <ion-button (click)="deleteArtist()" expand="block" fill="clear" shape="round" color="danger">
+      Delete
+    </ion-button>
   </div>
 </ion-content>
