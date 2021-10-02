@@ -8,19 +8,10 @@ import { Artist } from 'src/app/models/artist';
 export class ArtistService {
   constructor(private angulerFireStore: AngularFirestore) {}
 
-  getArtists() {
-    return this.angulerFireStore
-      .collection('artists')
-      .ref.get()
-      .then((data) => console.log(data));
+  getArtist() {
+    return this.angulerFireStore.collection<Artist>('artists');
   }
-  getArtist2() {
-    const userDoc = this.angulerFireStore.firestore.collection(`itemss`);
-    userDoc.get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        console.log(doc.id, '=>', doc.data());
-      });
-    });
-    return userDoc;
+  getArtistByEmail(email: string) {
+    return this.angulerFireStore.doc('artists/feroz');
   }
 }

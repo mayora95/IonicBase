@@ -9,12 +9,7 @@ import { ArtistPageRoutingModule } from './artist-routing.module';
 import { ArtistPage } from './artist.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ArtistPageRoutingModule
-  ],
-  declarations: [ArtistPage]
+  imports: [CommonModule, FormsModule, IonicModule, ArtistPageRoutingModule],
+  declarations: [ArtistPage],
 })
 export class ArtistPageModule {}

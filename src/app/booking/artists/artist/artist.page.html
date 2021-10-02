@@ -7,16 +7,10 @@
   </ion-toolbar>
 </ion-header>
 
-
-
 <ion-content>
-  <ion-text color="primary">
-    <h1>Show artist bio</h1>
-    <h2>Sérieux ?</h2>
-    <h3>Bah ouep mec</h3>
-    <h4>Ok d'accord</h4>
-    <h5>Aller au travail</h5>
-    <h6>Let's go !</h6>
-    <p>This is my paragraph</p>
-  </ion-text>
+  <div *ngIf="artist">
+    <h3>{{artist.userName}}</h3>
+    <p>{{artist.email}}</p>
+    <p>{{artist.active}}</p>
+  </div>
 </ion-content>

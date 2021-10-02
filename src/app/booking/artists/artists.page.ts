@@ -16,11 +16,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class ArtistsPage implements OnInit {
   private itemsCollection: AngularFirestoreCollection<Artist>;
   private items: Observable<Artist[]>;
-  constructor(
-    private artistServe: ArtistService,
-    private afs: AngularFirestore
-  ) {
-    this.itemsCollection = afs.collection<Artist>('artists');
+  constructor(private artistServe: ArtistService) {
+    this.itemsCollection = artistServe.getArtist();
     this.items = this.itemsCollection.valueChanges();
   }
 

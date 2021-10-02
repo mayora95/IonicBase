@@ -7,14 +7,10 @@ import { IonicModule } from '@ionic/angular';
 import { ArtistsPageRoutingModule } from './artists-routing.module';
 
 import { ArtistsPage } from './artists.page';
+import { ArtistPage } from './artist/artist.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ArtistsPageRoutingModule
-  ],
-  declarations: [ArtistsPage]
+  imports: [CommonModule, FormsModule, IonicModule, ArtistsPageRoutingModule],
+  declarations: [ArtistsPage, ArtistPage],
 })
 export class ArtistsPageModule {}
