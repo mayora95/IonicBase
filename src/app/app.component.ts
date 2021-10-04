@@ -10,7 +10,7 @@ import { LayoutRules } from './utils/layoutRules';
 export class AppComponent {
   fireBaseUser: User;
   public appPages = [
-    { title: 'home', url: '/home', icon: 'home', hidden: LayoutRules.loggedIn },
+    { title: 'Home', url: '/home', icon: 'home', hidden: LayoutRules.loggedIn },
     {
       title: 'Login',
       url: '/login',
