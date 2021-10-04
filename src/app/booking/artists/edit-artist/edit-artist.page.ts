@@ -18,8 +18,9 @@ export class EditArtistPage implements OnInit {
       .valueChanges()
       .subscribe((doc) => (this.artist = doc));
   }
-  logForm() {
+  saveArtist() {
     console.log(this.artist);
+    this.afs.collection('artists').doc('feroz').set(this.artist).then();
   }
   editArtist() {}
 }

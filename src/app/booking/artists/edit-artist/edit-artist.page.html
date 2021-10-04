@@ -22,29 +22,33 @@
     </ion-item>
   </form> -->
 
-  <form (ngSubmit)="logForm()" [(ngModel)]="artist" name="artist" ngDefaultControl>
+  <form (ngSubmit)="saveArtist()" name="artist" ngDefaultControl>
     <ion-item>
-      <ion-input [(ngModel)]="artist.email" type="text" name="artist.email" placeholder="Awesome Input"></ion-input>
+      <ion-label position="floating">E-mail
+        <ion-icon slot="start" name="at" margin></ion-icon>
+      </ion-label>
+      <ion-input required type="text" placeholder="E-mail" [(ngModel)]="artist.email" name="email">
+      </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">First name
         <ion-icon slot="start" name="person" margin></ion-icon>
       </ion-label>
-      <ion-input type="text" placeholder="First name" [(ngModel)]="artist.firstName" name="firstName">
+      <ion-input required type="text" placeholder="First name" [(ngModel)]="artist.firstName" name="firstName">
       </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Last name
         <ion-icon slot="start" name="person-outline" margin></ion-icon>
       </ion-label>
-      <ion-input type="text" placeholder="Last name" [(ngModel)]="artist.lastName" name="lastName">
+      <ion-input required type="text" placeholder="Last name" [(ngModel)]="artist.lastName" name="lastName">
       </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Last name
         <ion-icon slot="start" name="person-outline" margin></ion-icon>
       </ion-label>
-      <ion-textarea type="text" placeholder="Last name" [(ngModel)]="artist.lastName" name="lastName"></ion-textarea>
+      <ion-textarea required type="text" placeholder="Bio" [(ngModel)]="artist.bio" name="Bio"></ion-textarea>
     </ion-item>
     <ion-button type="submit" expand="block" fill="clear" shape="round">
       Edit
