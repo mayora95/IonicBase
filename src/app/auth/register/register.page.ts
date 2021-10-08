@@ -22,19 +22,13 @@ export class RegisterPage implements OnInit {
     createUserWithEmailAndPassword(auth, this.user.email, this.user.password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage);
       });
   }
-  onClick() {
-    console.log(this.user);
-  }
+  onClick() {}
 
-  logForm() {
-    console.log(this.todo);
-  }
+  logForm() {}
 }
