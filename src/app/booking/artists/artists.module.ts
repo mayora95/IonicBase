@@ -9,6 +9,7 @@ import { ArtistsPageRoutingModule } from './artists-routing.module';
 import { ArtistsPage } from './artists.page';
 import { ArtistPage } from './artist/artist.page';
 import { EditArtistPage } from './edit-artist/edit-artist.page';
+import { CollectionsName } from 'src/app/common/global/collections';
 
 @NgModule({
   imports: [

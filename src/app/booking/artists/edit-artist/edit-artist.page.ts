@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ActivatedRoute } from '@angular/router';
+import { CollectionsName } from 'src/app/common/global/collections';
 import { Artist } from 'src/app/models/artist';
+import { ToastController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-artist',
@@ -9,18 +13,48 @@ import { Artist } from 'src/app/models/artist';
 })
 export class EditArtistPage implements OnInit {
   public artist: Artist = new Artist();
-  constructor(private afs: AngularFirestore) {}
+  public id: string;
+  constructor(
+    private afs: AngularFirestore,
+    private route: ActivatedRoute,
+    private toastController: ToastController,
+    private alertController: AlertController
+  ) {}
 
   ngOnInit() {
+    this.route.paramMap.subscribe((params) => {
+      this.id = params.get('id');
+    });
     this.afs
-      .collection<Artist>('artists')
-      .doc('feroz')
+      .collection<Artist>(CollectionsName.artists)
+      .doc(this.id)
       .valueChanges()
       .subscribe((doc) => (this.artist = doc));
   }
   saveArtist() {
     console.log(this.artist);
-    this.afs.collection('artists').doc('feroz').set(this.artist).then();
+    this.afs
+      .collection(CollectionsName.artists)
+      .doc(this.id)
+      .set(this.artist)
+      .then(() => {
+        this.successToast();
+      });
   }
-  editArtist() {}
+  async successToast() {
+    const toast = await this.toastController.create({
+      message: 'Artist successfully saved.',
+      duration: 2000,
+      color: 'primary',
+    });
+    toast.present();
+  }
+  async failedToast() {
+    const toast = await this.toastController.create({
+      message: 'An error occured while saving the artist. please try again.',
+      duration: 2000,
+      color: 'danger',
+    });
+    toast.present();
+  }
 }

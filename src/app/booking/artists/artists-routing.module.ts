@@ -19,7 +19,7 @@ const routes: Routes = [
     component: ArtistPage,
   },
   {
-    path: 'edit-artist',
+    path: 'edit-artist/:id',
     component: EditArtistPage,
   },
 ];

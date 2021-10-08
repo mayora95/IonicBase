@@ -14,6 +14,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { EditArtistPage } from './booking/artists/edit-artist/edit-artist.page';
+import { CollectionsName } from './common/global/collections';
 
 @NgModule({
   declarations: [AppComponent],
