@@ -3,6 +3,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { CollectionsName } from 'src/app/common/global/collections';
 import { Artist } from 'src/app/models/artist';
+
+//UI Component
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 

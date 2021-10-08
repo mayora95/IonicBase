@@ -6,9 +6,10 @@ import { Login } from 'src/app/models/auth/login';
 //FireBase
 import * as firebase from 'firebase/auth';
 import { observable, Observable } from 'rxjs';
-
 import { AuthService } from '../../services/user/auth.service';
 
+//UI Componenent
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -18,7 +19,11 @@ export class LoginPage implements OnInit {
   user: Login;
   fireUser: firebase.User;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toastController: ToastController
+  ) {
     this.user = new Login();
 
     firebase.getAuth().onAuthStateChanged((user) => {
@@ -32,7 +37,18 @@ export class LoginPage implements OnInit {
       .logUserIn(this.user.email, this.user.password)
       .then(() => {
         this.fireUser = firebase.getAuth().currentUser;
-        this.router.navigateByUrl('/profile');
+      })
+      .catch(() => {
+        this.failedToast();
+      })
+      .finally(() => {
+        this.fireUser = firebase.getAuth().currentUser;
+        if (this.fireUser) {
+          this.router.navigateByUrl('/profile');
+          this.successToast();
+        } else {
+          this.failedToast();
+        }
       });
   }
   disconnect() {
@@ -42,7 +58,20 @@ export class LoginPage implements OnInit {
         this.router.navigateByUrl('/login');
       });
   }
-  showState() {
-    this.fireUser = firebase.getAuth().currentUser;
+  async successToast() {
+    const toast = await this.toastController.create({
+      message: 'Conected !',
+      duration: 2000,
+      color: 'primary',
+    });
+    toast.present();
+  }
+  async failedToast() {
+    const toast = await this.toastController.create({
+      message: 'Incorrect email or password...',
+      duration: 2000,
+      color: 'danger',
+    });
+    toast.present();
   }
 }
