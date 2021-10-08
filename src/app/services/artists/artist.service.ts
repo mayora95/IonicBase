@@ -10,8 +10,6 @@ export class ArtistService {
   constructor(private angulerFireStore: AngularFirestore) {}
 
   getArtist() {
-    console.log(CollectionsName.artists);
-
     return this.angulerFireStore.collection<Artist>(CollectionsName.artists);
   }
   getArtistByEmail(email: string) {

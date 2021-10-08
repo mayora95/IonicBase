@@ -52,9 +52,7 @@ export class ArtistPage implements OnInit {
           text: 'Cancel',
           role: 'cancel',
           cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Delete canceled');
-          },
+          handler: (blah) => {},
         },
         {
           text: 'Confirm',

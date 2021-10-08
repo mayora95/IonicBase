@@ -32,7 +32,6 @@ export class EditArtistPage implements OnInit {
       .subscribe((doc) => (this.artist = doc));
   }
   saveArtist() {
-    console.log(this.artist);
     this.afs
       .collection(CollectionsName.artists)
       .doc(this.id)
