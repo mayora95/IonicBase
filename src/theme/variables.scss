@@ -228,3 +228,9 @@
 //     --ion-card-background: #1e1e1e;
 //   }
 // }
+ion-item.item-has-focus > ion-label {
+  color: #aa6291 !important;
+}
+ion-button {
+  color: #aa6291;
+}
