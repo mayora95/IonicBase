@@ -24,15 +24,15 @@ export class AppComponent {
       hidden: LayoutRules.loggedOut,
     },
     {
-      title: 'Profile',
-      url: '/profile',
-      icon: 'person',
-      hidden: LayoutRules.loggedIn,
-    },
-    {
       title: 'Artists',
       url: '/artists',
       icon: 'book',
+      hidden: LayoutRules.loggedIn,
+    },
+    {
+      title: 'Profile',
+      url: '/profile',
+      icon: 'person',
       hidden: LayoutRules.loggedIn,
     },
   ];

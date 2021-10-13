@@ -4,8 +4,7 @@
       <ion-content>
         <ion-list id="inbox-list">
           <ion-list-header>NailLib</ion-list-header>
-          <ion-note>Pro nail artist near you</ion-note>
-
+          <ion-note class="note">Pro nail artist near you</ion-note>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
               routerLinkActive="selected" *ngIf="menuManagement(p.hidden)">

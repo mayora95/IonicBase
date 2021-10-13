@@ -8,17 +8,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-text class="ion-margin" class="ion-padding">
-    <p>Availible artists around you</p>
+  <ion-text id="description" class="description">
+    Artists availible around you
   </ion-text>
   <ion-card button (click)="goToArtist(artist.id)" *ngFor="let artist of artists | async">
-
     <img src="{{artist.pic}}" />
-
-
     <ion-card-header>
-      <ion-card-subtitle style="color:#aa629197">Nail artist</ion-card-subtitle>
-      <ion-card-title style="color:#7f4369">{{artist.userName}}</ion-card-title>
+      <ion-card-subtitle>Nail artist</ion-card-subtitle>
+      <ion-card-title>{{artist.userName}}</ion-card-title>
     </ion-card-header>
     <ion-card-content style="color:#aa6291">{{artist.bio}}
     </ion-card-content>

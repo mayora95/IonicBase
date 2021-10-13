@@ -46,7 +46,7 @@ ion-menu.md ion-list#labels-list ion-list-header {
 ion-menu.md ion-item {
   --padding-start: 10px;
   --padding-end: 10px;
-  border-radius: 4px;
+  border-radius: 20px;
 }
 
 ion-menu.md ion-item.selected {
@@ -114,5 +114,9 @@ ion-note {
 }
 
 ion-item.selected {
-  --color: #591b43;
+  --color: #fff;
+}
+
+.note {
+  color: #b28da5;
 }

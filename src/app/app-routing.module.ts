@@ -5,7 +5,7 @@ import { AuthGuard } from './services/user/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'artists/artist-details',
+    redirectTo: 'artists',
     pathMatch: 'full',
   },
   {
