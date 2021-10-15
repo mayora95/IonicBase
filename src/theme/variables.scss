@@ -8,6 +8,8 @@ form > ion-item > ion-label {
 ion-button {
   color: $secondary;
 }
+ion-button:hover {
+}
 .ion-color-primary {
   --ion-color-base: var(--ion-color-primary, #fff) !important;
   --ion-color-base-rgb: var(--ion-color-primary-rgb, 56, 128, 255) !important;
