@@ -45,7 +45,7 @@ export class EditArtistPage implements OnInit {
   async successToast() {
     const toast = await this.toastController.create({
       message: 'Artist successfully saved.',
-      duration: 2000,
+      duration: 3000,
       color: 'primary',
     });
     toast.present();
@@ -53,7 +53,7 @@ export class EditArtistPage implements OnInit {
   async failedToast() {
     const toast = await this.toastController.create({
       message: 'An error occured while saving the artist. please try again.',
-      duration: 2000,
+      duration: 3000,
       color: 'danger',
     });
     toast.present();
