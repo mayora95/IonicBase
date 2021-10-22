@@ -9,8 +9,6 @@ form > ion-item > ion-label {
 ion-button {
   color: $secondary;
 }
-ion-button:hover {
-}
 
 :root {
   .ion-color-primary {
@@ -169,7 +167,18 @@ ion-menu-toggle > ion-item {
 
 ion-menu-toggle > ion-item.selected {
   background-color: $secondary;
+  color: $secondary;
 }
+
+ion-menu-toggle.ios > ion-item.selected {
+  background-color: $secondary;
+}
+// ion-menu-toggle > ion-item.selected {
+//   background-color: $secondary;
+//   font-style: bold;
+//   --ion-item-background: $secondary;
+//   border-radius: 20px;
+// }
 
 ion-card > * {
   color: $primary;
