@@ -37,6 +37,7 @@ export class LoginPage implements OnInit {
       .logUserIn(this.user.email, this.user.password)
       .then(() => {
         this.fireUser = firebase.getAuth().currentUser;
+        console.log(this.fireUser);
       })
       .catch(() => {
         this.failedToast();
@@ -47,6 +48,8 @@ export class LoginPage implements OnInit {
           this.router.navigateByUrl('/profile');
           this.successToast();
         } else {
+          console.log(this.fireUser);
+
           this.failedToast();
         }
       });
