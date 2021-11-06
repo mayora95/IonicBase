@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { CollectionsName } from 'src/app/common/global/collections';
+import { User } from 'src/app/models/auth/user';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   user: any;
-  constructor() {}
+  constructor(private afs: AngularFirestore) {}
   public async logUserIn(mail, password) {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, mail, password)
@@ -23,4 +25,25 @@ export class AuthService {
       });
   }
   public isAdmin() {}
+  public createUserInfos(email: string) {
+    //Create user info
+    const userTmp = new User();
+    userTmp.email = email;
+    userTmp.isActive = true;
+    userTmp.isAdmin = false;
+    userTmp.isArtist = false;
+    this.afs
+      .collection<User>(CollectionsName.users)
+      .doc(email)
+      .set(Object.assign({}, userTmp));
+  }
+  public getUserInfos(email: string) {
+    let usr = new User();
+    this.afs
+      .collection<User>(CollectionsName.artists)
+      .doc(email)
+      .valueChanges()
+      .subscribe((doc) => (usr = doc));
+    return usr;
+  }
 }

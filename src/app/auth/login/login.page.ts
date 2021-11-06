@@ -10,6 +10,7 @@ import { AuthService } from '../../services/user/auth.service';
 
 //UI Componenent
 import { ToastController } from '@ionic/angular';
+import { User } from 'src/app/models/auth/user';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -33,26 +34,29 @@ export class LoginPage implements OnInit {
   ngOnInit() {}
   onClick() {}
   async login() {
-    await this.authService
-      .logUserIn(this.user.email, this.user.password)
-      .then(() => {
-        this.fireUser = firebase.getAuth().currentUser;
-        console.log(this.fireUser);
-      })
-      .catch(() => {
-        this.failedToast();
-      })
-      .finally(() => {
-        this.fireUser = firebase.getAuth().currentUser;
-        if (this.fireUser) {
-          this.router.navigateByUrl('/profile');
-          this.successToast();
-        } else {
-          console.log(this.fireUser);
+    // await this.authService
+    //   .logUserIn(this.user.email, this.user.password)
+    //   .then(() => {
+    //     this.fireUser = firebase.getAuth().currentUser;
+    //     console.log(this.fireUser);
+    //   })
+    //   .catch(() => {
+    //     this.failedToast();
+    //   })
+    //   .finally(() => {
+    //     this.fireUser = firebase.getAuth().currentUser;
+    //     if (this.fireUser) {
+    //       this.router.navigateByUrl('/profile');
+    //       this.successToast();
+    //     } else {
+    //       console.log(this.fireUser);
 
-          this.failedToast();
-        }
-      });
+    //       this.failedToast();
+    //     }
+    //   });
+    let usr = new User();
+    usr = this.authService.getUserInfos(this.user.email);
+    console.log(usr);
   }
   disconnect() {
     getAuth()
