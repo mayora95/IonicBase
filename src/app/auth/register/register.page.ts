@@ -19,16 +19,16 @@ export class RegisterPage implements OnInit {
   ngOnInit() {}
 
   registerUser() {
-    // const auth = getAuth();
-    // createUserWithEmailAndPassword(auth, this.user.email, this.user.password)
-    //   .then((userCredential) => {
-    //     const user = userCredential.user;
-    //     this.authService.createUserInfos(this.user.email);
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //   });
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, this.user.email, this.user.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        this.authService.createUserInfos(this.user.email);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
     this.authService.createUserInfos(this.user.email);
   }
   onClick() {}

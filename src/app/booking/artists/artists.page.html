@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-text id="description" class="description">
-    Artists availible around you
+    Availible artists around you
   </ion-text>
   <ion-card button (click)="goToArtist(artist.id)" *ngFor="let artist of artists | async">
     <img src="{{artist.pic}}" />
